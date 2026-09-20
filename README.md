@@ -21,10 +21,10 @@
 
 | 仓库 | 是什么 | 许可 |
 |------|--------|------|
-| **[cercis-core](https://github.com/yanwenhuan28/cercis-core)** | 内核：数据存取 + AI 友好（Rust 库 + `cercis` 命令行） | Apache-2.0 |
-| **[cercis-kits-basic](https://github.com/yanwenhuan28/cercis-kits-basic)** | 基础工具包：项目向导 / 通用录入 / 通用导入导出 / 通用体检 | Apache-2.0 |
-| **[cercis-kits-research](https://github.com/yanwenhuan28/cercis-kits-research)** | 科研工具包：科研模板、术语包、SPSS/R 导出、打印标签、NAS | Apache-2.0 |
-| **[cercis-apps](https://github.com/yanwenhuan28/cercis-apps)** | 各平台界面与插件宿主（桌面本地网页界面先行） | Apache-2.0 |
+| **[cercis-core](https://github.com/epiphanygrove/cercis-core)** | 内核：数据存取 + AI 友好（Rust 库 + `cercis` 命令行） | Apache-2.0 |
+| **[cercis-kits-basic](https://github.com/epiphanygrove/cercis-kits-basic)** | 基础工具包：项目向导 / 通用录入 / 通用导入导出 / 通用体检 | Apache-2.0 |
+| **[cercis-kits-research](https://github.com/epiphanygrove/cercis-kits-research)** | 科研工具包：科研模板、术语包、SPSS/R 导出、打印标签、NAS | Apache-2.0 |
+| **[cercis-apps](https://github.com/epiphanygrove/cercis-apps)** | 各平台界面与插件宿主（桌面本地网页界面先行） | Apache-2.0 |
 
 > 需求文档、数据格式规范等**开发内部文档暂不公开**；将来开放的是面向读者的
 > 格式规范、教程与合成示例（不含任何真实研究数据）。
@@ -58,9 +58,9 @@
 ## 三分钟跑起来（合成数据，不涉及真实研究数据）
 
 ```bash
-git clone https://github.com/yanwenhuan28/cercis-core.git
-git clone https://github.com/yanwenhuan28/cercis-kits-basic.git
-git clone https://github.com/yanwenhuan28/cercis-apps.git
+git clone https://github.com/epiphanygrove/cercis-core.git
+git clone https://github.com/epiphanygrove/cercis-kits-basic.git
+git clone https://github.com/epiphanygrove/cercis-apps.git
 
 cd cercis-core      && cargo build            # 内核与命令行
 cd ../cercis-kits-basic && cargo build         # 四个插件
@@ -91,8 +91,17 @@ cd ../cercis-core
 
 ## 关于名字
 
-Cercis 是紫荆属的学名；标语"愿瑟希斯捍卫你的思想"致敬《崩坏：星穹铁道》中的瑟希斯
-（Cerces）——**非官方、非商业用途**，仅表达"希望工具守护你的记录与判断"。
+三个名字各司其职：
+
+| 名字 | 用在哪 | 是什么 |
+|------|--------|--------|
+| **Cercis** | 产品名 | 紫荆属的学名——用真实植物属名，专业场合不尴尬，检索不会被同名游戏内容淹没 |
+| **Cerces** | 标语 | 「愿瑟希斯捍卫你的思想」致敬《崩坏：星穹铁道》中的瑟希斯——**非官方、非商业用途** |
+| **Epiphany Grove** | 组织名 | 来自游戏里瑟希斯所在的「神悟树庭」（Grove of Epiphany）——项目的"出身" |
+
+换成一句话：**产品名保持中立，致敬放在标语，归属放在组织名。**
+这样既认得出典故，又不会把游戏专有名词变成要承担商标风险的品牌
+（这也是为什么没有直接叫 `Epiphany`——那个名字在 npm、PyPI、crates.io 上也都已经被占了）。
 
 ## 许可
 
