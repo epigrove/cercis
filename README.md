@@ -66,10 +66,21 @@ cd cercis-core      && cargo build            # 内核与命令行
 cd ../cercis-kits-basic && cargo build         # 四个插件
 mkdir -p ~/.cercis/plugins && cp -r plugins/* ~/.cercis/plugins/
 export PATH="$PWD/target/debug:$PATH"
-cd ../cercis-apps/desktop && cargo run         # 浏览器打开 http://127.0.0.1:8765
+
+cd ../cercis-apps/desktop
+export CERCIS_BIN="$(cd ../../cercis-core && pwd)/target/debug/cercis"   # 告诉 app 内核在哪
+cargo run                                      # 浏览器打开 http://127.0.0.1:8765
 ```
 
 在界面里用「项目向导」新建一个项目，就能开始录数据、导入 CSV、导出与体检。
+
+只想用命令行也可以：
+
+```bash
+cd ../cercis-core
+./target/debug/cercis init ~/我的项目 --name "我的项目" --json
+./target/debug/cercis skill ~/我的项目 --install codex   # 让 Codex 学会怎么操作这个项目
+```
 
 ## 红线（不可动摇）
 
