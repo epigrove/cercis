@@ -1,0 +1,7 @@
+# 本仓库只做"总介绍"，各子目录是独立仓库，不在这里跟踪
+kernel/
+kits/
+apps/
+docs/
+
+.DS_Store
