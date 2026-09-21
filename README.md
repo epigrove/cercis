@@ -24,6 +24,7 @@
 | **[cercis-core](https://github.com/epiphanygrove/cercis-core)** | 内核：数据存取 + AI 友好（Rust 库 + `cercis` 命令行） | Apache-2.0 |
 | **[cercis-kits-basic](https://github.com/epiphanygrove/cercis-kits-basic)** | 基础工具包：项目向导 / 通用录入 / 通用导入导出 / 通用体检 | Apache-2.0 |
 | **[cercis-kits-research](https://github.com/epiphanygrove/cercis-kits-research)** | 科研工具包：科研模板、术语包、SPSS/R 导出、打印标签、NAS | Apache-2.0 |
+| **[cercis-ui](https://github.com/epiphanygrove/cercis-ui)** | 插件界面规范：一套界面图样，各平台搭成自己的原生界面 | Apache-2.0 |
 | **[cercis-apps](https://github.com/epiphanygrove/cercis-apps)** | 各平台界面与插件宿主（桌面本地网页界面先行） | Apache-2.0 |
 
 > 需求文档、数据格式规范等**开发内部文档暂不公开**；将来开放的是面向读者的
@@ -42,6 +43,7 @@
 - **内核不认识学科**：只认表、记录、字段、文件、历史；"研究/样本/观测"这类含义由插件模板提供，换模板就变成另一套系统（企业台账、库存、设备记录都行）。
 - **写入只有一个通道**：任何插件、任何 AI 都必须通过内核命令写入——原子落盘、逐次存档、自动留痕。
 - **app 是插件宿主**：负责发现插件、按声明的权限授权、以子进程调用；插件崩溃不影响主程序与数据。
+- **插件界面只写一份**：插件交一份"界面图样"，各平台的 app 照图搭成自己的原生控件——结构一致，长相随系统（见 `cercis-ui`）。
 - **AI 是使用者，不是特殊通道**：内核为 AI 生成 `AGENTS.md`、机器清单与契约，还能一键装一个 **Agent 技能包**（Codex / Claude Code 直接会用）。
 
 ## 现在到哪一步了
@@ -52,6 +54,7 @@
 | S4 | 桌面本地网页界面（打开 / 浏览 / 筛选 / 流水 / 校验，中英双语） | **完成** |
 | S5 | 基础工具包第一批四个插件 + app 插件宿主 | **完成**（20 个测试，含跨进程端到端） |
 | 附带 | AI Agent 技能包（与 AI 契约同源生成） | **完成** |
+| 进行中 | **插件界面规范（cercis-ui）**：一套插件界面在各平台原生生效 | **v1 草稿**（规范 + 图样格式 + 校验器 + 两个官方示例） |
 | S6 | 黄金对照验收：合成数据走完整链路 + R 复算 + 技能包实跑 | 下一步 |
 | S7–S9 | 科研工具包：模板 / 导入导出 / 记录与同步 | 待做 |
 

@@ -3,5 +3,6 @@ kernel/
 kits/
 apps/
 docs/
+ui/
 
 .DS_Store
