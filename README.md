@@ -67,7 +67,8 @@
 | 附带 | AI Agent 技能包（与 AI 契约同源生成） | **完成** |
 | 进行中 | **插件界面规范（cercis-ui）**：一套插件界面在各平台原生生效 | **v1 草稿**（规范 + 图样格式 + 校验器 + 两个官方示例） |
 | S6 | 黄金对照验收：合成数据走完整链路 + R 复算 + 技能包 | **完成**（[72 项对账 0 失败](https://github.com/epigrove/cercis-examples/blob/main/verify/REPORT.md)；发现 6 处问题，1 处已修） |
-| S7–S9 | 科研工具包：模板 / 导入导出 / 记录与同步 | 待做 |
+| S7 | 科研工具包：**字段模板 + 术语包 + 方法文档** | **完成**（[田间试验模板 9 张表](https://github.com/epigrove/cercis-kits-research/blob/main/templates/field-trial.yaml)；农业/医学/通用术语包，切换术语**数据字节不变**） |
+| S8–S9 | 科研工具包：导入导出（xlsx/SPSS/R） / 记录与同步（含田间录入员） | 待做 |
 | S10 | 插件市场 + Zotero 式插件界面 | 待做（**科研工具包对外分发的门槛**） |
 
 ## 三分钟跑起来（合成数据，不涉及真实研究数据）
