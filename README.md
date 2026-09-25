@@ -26,6 +26,7 @@
 | **[cercis-kits-research](https://github.com/epigrove/cercis-kits-research)** | 科研工具包：科研模板、术语包、SPSS/R 导出、打印标签、NAS | Apache-2.0 |
 | **[cercis-ui](https://github.com/epigrove/cercis-ui)** | 插件界面规范：一套界面图样，各平台搭成自己的原生界面 | Apache-2.0 |
 | **[cercis-apps](https://github.com/epigrove/cercis-apps)** | 各平台界面与插件宿主（桌面本地网页界面先行） | Apache-2.0 |
+| **[cercis-examples](https://github.com/epigrove/cercis-examples)** | 合成示例与黄金对照验收：生成器、全链路脚本、R 复算与报告 | Apache-2.0 |
 
 > 需求文档、数据格式规范等**开发内部文档暂不公开**；将来开放的是面向读者的
 > 格式规范、教程与合成示例（不含任何真实研究数据）。
@@ -65,7 +66,7 @@
 | S5 | 基础工具包第一批四个插件 + app 插件宿主 | **完成**（20 个测试，含跨进程端到端） |
 | 附带 | AI Agent 技能包（与 AI 契约同源生成） | **完成** |
 | 进行中 | **插件界面规范（cercis-ui）**：一套插件界面在各平台原生生效 | **v1 草稿**（规范 + 图样格式 + 校验器 + 两个官方示例） |
-| S6 | 黄金对照验收：合成数据走完整链路 + R 复算 + 技能包实跑 | 下一步 |
+| S6 | 黄金对照验收：合成数据走完整链路 + R 复算 + 技能包 | **完成**（[72 项对账 0 失败](https://github.com/epigrove/cercis-examples/blob/main/verify/REPORT.md)；发现 6 处问题，1 处已修） |
 | S7–S9 | 科研工具包：模板 / 导入导出 / 记录与同步 | 待做 |
 | S10 | 插件市场 + Zotero 式插件界面 | 待做（**科研工具包对外分发的门槛**） |
 

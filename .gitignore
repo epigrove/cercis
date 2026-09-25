@@ -4,5 +4,6 @@ kits/
 apps/
 docs/
 ui/
+examples/
 
 .DS_Store
