@@ -27,9 +27,10 @@
 | **[cercis-ui](https://github.com/epigrove/cercis-ui)** | 插件界面规范：一套界面图样，各平台搭成自己的原生界面 | Apache-2.0 |
 | **[cercis-apps](https://github.com/epigrove/cercis-apps)** | 各平台界面与插件宿主（桌面本地网页界面先行） | Apache-2.0 |
 | **[cercis-examples](https://github.com/epigrove/cercis-examples)** | 合成示例与黄金对照验收：生成器、全链路脚本、R 复算与报告 | Apache-2.0 |
+| **[cercis-docs](https://github.com/epigrove/cercis-docs)** | **读者文档**：数据格式规范、模板说明、教程、合成示例导览 | CC BY 4.0 |
 
-> 需求文档、数据格式规范等**开发内部文档暂不公开**；将来开放的是面向读者的
-> 格式规范、教程与合成示例（不含任何真实研究数据）。
+> 需求文档、决策记录等**开发内部文档不公开**（只在本地版本管理）；面向读者的
+> 格式规范、教程与合成示例导览在 **cercis-docs**，且不含任何真实研究数据。
 
 ## 装什么、怎么装
 
