@@ -8,3 +8,6 @@ ui/
 examples/
 
 .DS_Store
+
+# 打包产物（`apps/desktop/packaging/<平台>/build.sh` 的输出：.app / zip / 图标）
+build/
