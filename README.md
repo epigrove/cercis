@@ -31,6 +31,9 @@
 
 > 需求文档、决策记录等**开发内部文档不公开**（只在本地版本管理）；面向读者的
 > 格式规范、教程与合成示例导览在 **cercis-docs**，且不含任何真实研究数据。
+>
+> 源码注释里会出现形如"§12.5.1""D47"的编号——那是内部需求文档的章节与决策编号。
+> 公开的读者文档讲概念与用法，不依赖这些编号，读代码时把它们当作"更细的说明书在此"即可。
 
 ## 装什么、怎么装
 
@@ -60,33 +63,36 @@
 
 ## 现在到哪一步了
 
+内核到界面到科研闭环都已经跑通，现在在做"发布准备"（安装包、文档、名称复核）。
+
 | 步骤 | 内容 | 状态 |
 |------|------|------|
-| S1–S3 | 内核：数据存取、模板与查询、AI 友好与插件协议 | **完成**（44 个测试全绿） |
-| S4 | 桌面本地网页界面（打开 / 浏览 / 筛选 / 流水 / 校验，中英双语） | **完成** |
-| S5 | 基础工具包第一批四个插件 + app 插件宿主 | **完成**（20 个测试，含跨进程端到端） |
-| 附带 | AI Agent 技能包（与 AI 契约同源生成） | **完成** |
-| 进行中 | **插件界面规范（cercis-ui）**：一套插件界面在各平台原生生效 | **v1 草稿**（规范 + 图样格式 + 校验器 + 两个官方示例） |
-| S6 | 黄金对照验收：合成数据走完整链路 + R 复算 + 技能包 | **完成**（[72 项对账 0 失败](https://github.com/epigrove/cercis-examples/blob/main/verify/REPORT.md)；发现 6 处问题，1 处已修） |
-| S7 | 科研工具包：**字段模板 + 术语包 + 方法文档** | **完成**（[田间试验模板 9 张表](https://github.com/epigrove/cercis-kits-research/blob/main/templates/field-trial.yaml)；农业/医学/通用术语包，切换术语**数据字节不变**） |
-| S8–S9 | 科研工具包：导入导出（xlsx/SPSS/R） / 记录与同步（含田间录入员） | 待做 |
-| S10 | 插件市场 + Zotero 式插件界面 | 待做（**科研工具包对外分发的门槛**） |
+| S1–S3 | 内核：数据存取、模板与查询、值类型、AI 友好与插件协议 | **完成**（内核 193 项测试） |
+| S4–S5 | 桌面本地网页界面 + 基础工具包四个插件（向导 / 录入 / 导入导出 / 体检） | **完成**（基础包 34 项测试，含跨进程端到端） |
+| S6 | 黄金对照验收：多时期多因素合成数据走完整链路 + R 复算 | **完成**（[157 项对账 0 失败](https://github.com/epigrove/cercis-examples/blob/main/verify/REPORT.md)） |
+| S7–S9 | 科研工具包：田间试验模板与术语包、xlsx/SPSS/R 导入导出、田间录入员（语音 + 手稿，逐格置信度） | **完成**（科研包 27 项测试） |
+| S9.5 | 动态可组合性地基：插件注册台账与倒序回滚、声明式前置、状态指纹、键命名空间 | **完成** |
+| S10 | 插件市场（内核 + app 面板）、插件装卸与屏蔽、权限降级（表范围 / 只读 / 域名清单） | **完成** |
+| S11–S12 | 加密共享与分权、打包 / 合并 / 分享守卫（发布零数据） | **完成** |
+| S13 | 桌面 app 完善：待办、历史审阅与差异、大表分页、搬运页、NAS 与工作副本、账户与角色 | **完成**（app 30 项测试 + 24 项界面自动验收） |
+| S14 | 多端：局域网模式（平板/手机开浏览器就用）、Linux 与 macOS 装机、arm64/x86 交叉检查 | **部分完成**：桌面端可用；**原生移动客户端待做**（评估见 docs 仓库） |
+| S15 | 发布准备：名称复核、发布前扫描（无真实数据）、发布说明、安装包 | **进行中** |
+| — | 插件界面规范（`cercis-ui`）：一套界面图样在各平台原生生效 | **v1**（规范 + 图样格式 + 校验器 + 两个官方示例；各平台渲染器待做） |
 
 ## 三分钟跑起来（合成数据，不涉及真实研究数据）
 
+从源码跑的话，**三个仓库要摆成下面这个布局**（app 的构建会去 `../kernel` 找内核，
+打包脚本会去 `kits/basic` 拿插件；目录名照抄即可）：
+
 ```bash
-git clone https://github.com/epigrove/cercis-core.git
-git clone https://github.com/epigrove/cercis-kits-basic.git
-git clone https://github.com/epigrove/cercis-apps.git
+mkdir -p cercis-workspace/kits && cd cercis-workspace
+git clone https://github.com/epigrove/cercis-core.git        kernel
+git clone https://github.com/epigrove/cercis-kits-basic.git  kits/basic
+git clone https://github.com/epigrove/cercis-apps.git        apps
 
-cd cercis-core      && cargo build            # 内核与命令行
-cd ../cercis-kits-basic && cargo build         # 四个插件
-mkdir -p ~/.cercis/plugins && cp -r plugins/* ~/.cercis/plugins/
-export PATH="$PWD/target/debug:$PATH"
-
-cd ../cercis-apps/desktop
-export CERCIS_BIN="$(cd ../../cercis-core && pwd)/target/debug/cercis"   # 告诉 app 内核在哪
-cargo run                                      # 浏览器打开 http://127.0.0.1:8765
+cd kernel && cargo build && cd ..              # 内核与命令行
+bash apps/desktop/packaging/install-basic-kits.sh   # 构建四个基础插件并装上（写安装台账）
+cd apps/desktop && cargo run                   # 浏览器打开 http://127.0.0.1:8765
 ```
 
 在界面里用「项目向导」新建一个项目，就能开始录数据、导入 CSV、导出与体检。
@@ -94,10 +100,13 @@ cargo run                                      # 浏览器打开 http://127.0.0.
 只想用命令行也可以：
 
 ```bash
-cd ../cercis-core
-./target/debug/cercis init ~/我的项目 --name "我的项目" --json
-./target/debug/cercis skill ~/我的项目 --install codex   # 让 Codex 学会怎么操作这个项目
+cd ../..                         # 回到 cercis-workspace
+./kernel/target/debug/cercis init ~/我的项目 --name "我的项目" --json
+./kernel/target/debug/cercis skill ~/我的项目 --install codex   # 让 Codex 学会怎么操作这个项目
 ```
+
+不想编译也行：**macOS / Linux 已经有打包脚本**（`apps/desktop/packaging/` 下，
+一条命令出安装包，内置内核与基础工具包）；安装包**没有签名**，首次打开要按发布说明手动放行。
 
 ## 红线（不可动摇）
 
